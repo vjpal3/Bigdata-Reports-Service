@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,10 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@Data
+@Table(name = "transaction")
 public class MobileTransaction {
 
 	@Id
@@ -48,4 +46,122 @@ public class MobileTransaction {
 	private Integer isFraud;
 	
 	private Integer isFlaggedFraud;
+	
+	public MobileTransaction() {
+	}
+	
+	public MobileTransaction(Integer step, String type, BigDecimal amount, String nameOrig,
+			BigDecimal oldBalanceOrig, BigDecimal newBalanceOrig, String nameDest, BigDecimal oldBalanceDest,
+			BigDecimal newBalanceDest, Integer isFraud, Integer isFlaggedFraud) {
+		super();
+		this.step = step;
+		this.type = type;
+		this.amount = amount;
+		this.nameOrig = nameOrig;
+		this.oldBalanceOrg = oldBalanceOrig;
+		this.newBalanceOrig = newBalanceOrig;
+		this.nameDest = nameDest;
+		this.oldBalanceDest = oldBalanceDest;
+		this.newBalanceDest = newBalanceDest;
+		this.isFraud = isFraud;
+		this.isFlaggedFraud = isFlaggedFraud;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Integer getStep() {
+		return step;
+	}
+
+	public void setStep(Integer step) {
+		this.step = step;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public String getNameOrig() {
+		return nameOrig;
+	}
+
+	public void setNameOrig(String nameOrig) {
+		this.nameOrig = nameOrig;
+	}
+
+	public BigDecimal getOldBalanceOrg() {
+		return oldBalanceOrg;
+	}
+
+	public void setOldBalanceOrg(BigDecimal oldBalanceOrg) {
+		this.oldBalanceOrg = oldBalanceOrg;
+	}
+
+	public BigDecimal getNewBalanceOrig() {
+		return newBalanceOrig;
+	}
+
+	public void setNewBalanceOrig(BigDecimal newBalanceOrig) {
+		this.newBalanceOrig = newBalanceOrig;
+	}
+
+	public String getNameDest() {
+		return nameDest;
+	}
+
+	public void setNameDest(String nameDest) {
+		this.nameDest = nameDest;
+	}
+
+	public BigDecimal getOldBalanceDest() {
+		return oldBalanceDest;
+	}
+
+	public void setOldBalanceDest(BigDecimal oldBalanceDest) {
+		this.oldBalanceDest = oldBalanceDest;
+	}
+
+	public BigDecimal getNewBalanceDest() {
+		return newBalanceDest;
+	}
+
+	public void setNewBalanceDest(BigDecimal newBalanceDest) {
+		this.newBalanceDest = newBalanceDest;
+	}
+
+	public Integer getIsFraud() {
+		return isFraud;
+	}
+
+	public void setIsFraud(Integer isFraud) {
+		this.isFraud = isFraud;
+	}
+
+	public Integer getIsFlaggedFraud() {
+		return isFlaggedFraud;
+	}
+
+	public void setIsFlaggedFraud(Integer isFlaggedFraud) {
+		this.isFlaggedFraud = isFlaggedFraud;
+	}
+	
+	
 }
