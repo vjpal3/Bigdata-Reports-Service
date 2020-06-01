@@ -36,7 +36,7 @@
 		<band height="13"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="21">
+		<band height="31">
 			<line>
 				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="32fe5205-0f60-4589-93e6-87d5e2454d96"/>
 			</line>
