@@ -37,6 +37,7 @@ public class ReportService {
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(fraudTrasanctions);
 		
 		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("createdBy", "Vrishali Pal");
 		
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 		

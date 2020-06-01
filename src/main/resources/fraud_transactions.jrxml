@@ -2,10 +2,10 @@
 <!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fraud_transactions" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="77eb7686-fb2b-458c-b4fd-528860e085c0">
 	<field name="type" class="java.lang.String"/>
-	<field name="amount" class="java.lang.BigDecimal"/>
+	<field name="amount" class="java.math.BigDecimal"/>
 	<field name="nameOrig" class="java.lang.String"/>
-	<field name="oldBalanceOrg" class="java.lang.BigDecimal"/>
-	<field name="newBalanceOrig" class="java.lang.BigDecimal"/>
+	<field name="oldBalanceOrg" class="java.math.BigDecimal"/>
+	<field name="newBalanceOrig" class="java.math.BigDecimal"/>
 	<field name="nameDest" class="java.lang.String"/>
 	<field name="isFraud" class="java.lang.Integer"/>
 	<background>
