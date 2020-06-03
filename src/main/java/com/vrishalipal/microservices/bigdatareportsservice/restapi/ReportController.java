@@ -3,8 +3,6 @@ package com.vrishalipal.microservices.bigdatareportsservice.restapi;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,9 +23,6 @@ import net.sf.jasperreports.engine.JRException;
 public class ReportController {
 	
 	@Autowired
-	private static final Logger LOGGER = LoggerFactory.getLogger(ReportController.class);
-	
-	@Autowired
 	private MobileTransactionRepository repository;
 	
 	@Autowired
@@ -45,6 +40,11 @@ public class ReportController {
 	@GetMapping("/fraud/{format}")
 	public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
 		return service.exportReport(format);
+	}
+	
+	@GetMapping("/fraud")
+	public String generatePDFHtmlReports() throws FileNotFoundException, JRException {
+		return service.exportReport();
 	}
 	
 }

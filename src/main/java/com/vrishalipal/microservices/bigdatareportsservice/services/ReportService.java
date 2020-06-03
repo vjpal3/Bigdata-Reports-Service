@@ -27,7 +27,19 @@ public class ReportService {
 	@Autowired 
 	private MobileTransactionRepository repository;
 	
-	public String exportReport(String reportFormat) throws FileNotFoundException, JRException {
+	private String path = "E:\\Vrishali\\careerdevs-2019\\java-repos-2020\\CapstoneBigDataMSA\\reports";
+	
+	private JasperPrint jasperPrint;
+	
+	public String exportReport() throws FileNotFoundException, JRException {
+		configureJasperReport();
+		exportPDFReport();
+		exportHTMLReport();
+		return "Report generated in path: " + path;
+	}
+	
+	public void configureJasperReport() throws FileNotFoundException, JRException {
+		
 		List<MobileTransaction> fraudTrasanctions = repository.findByIsFraud();
 		
 		//Load file and compile it
@@ -39,18 +51,27 @@ public class ReportService {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("createdBy", "Vrishali Pal");
 		
-		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-		
-		String path = "E:\\Vrishali\\careerdevs-2019\\java-repos-2020\\CapstoneBigDataMSA\\reports";
+		jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+	}
+	
+	public void exportPDFReport() throws JRException {
+		JasperExportManager.exportReportToPdfFile(jasperPrint,  path + "\\fraud_transactions.pdf");
+	}
+	
+	public void exportHTMLReport() throws JRException {
+		JasperExportManager.exportReportToHtmlFile(jasperPrint,  path + "\\fraud_transactions.html");
+	}
+	
+	public String exportReport(String reportFormat) throws FileNotFoundException, JRException  {
+		configureJasperReport();
 		
 		if(reportFormat.equalsIgnoreCase("html")) {
-			JasperExportManager.exportReportToHtmlFile(jasperPrint,  path + "\\fraud_transactions.html");
+			exportHTMLReport();
 		}
 		
 		if(reportFormat.equalsIgnoreCase("pdf")) {
-			JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\fraud_transactions.pdf");
+			exportPDFReport();
 		}
-		
 		return "Report generated in path: " + path;
 	}
 }
